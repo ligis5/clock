@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.page{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+}
+.clock-frame{
+    width: 45vw;
+    height: 20vw;
+    display: grid;
+    border: 2px solid black;
+    border-radius: 15%;
+    align-items: center;
+}
+
+.clock-screen{
+    display: flex;
+    margin: auto;
+    width: 90%;
+    height: 80%;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+
+.time{
+    display: flex;
+    align-items: center;
+    font-size: 5vw;
+    color: rgb(126, 20, 20);
+    text-shadow: 1px 1px black;
+}
+.clock-divider{
+   margin-bottom: 2vw;
+   animation: blinking 4s;
+   animation-iteration-count: infinite;
+}
+
+.right-side{
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(4, 4vw);
+    border-left: 2px solid black;
+}
+
+.temperature{
+    display: flex;
+    padding-left: 1vw;
+    font-size: 1.5vw;
+    height: fit-content;
+    border-bottom: 2px solid black;
+    grid-column: span 2;
+}
+.date{
+    display: flex;
+    height: fit-content;
+    justify-content: space-around;
+    grid-column: span 2;
+    font-size: 2vw;
+    border-bottom: 2px solid black;
+}
+.alarm-name-container{
+    grid-column: span 2;
+    margin-top: auto;
+    justify-self: center;
+    font-size: 1.5vw;
+}
+.alarm{
+    display: flex;
+    margin: auto;
+    grid-column: span 2;
+    font-size: 2vw;
+}
+
+.alarm-divider{
+    animation: blinking 4s;
+    animation-iteration-count: infinite;
+ }
+
+
+
+
+
+@keyframes blinking {
+    0% {color: rgb(126, 20, 20)}
+    50% {color: black;}
+    100% {color: rgb(126, 20, 20)}
+}
