@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 
 .page{
@@ -16,7 +17,7 @@
     height: 20vw;
     display: grid;
     border: 2px solid black;
-    border-radius: 15%;
+    border-radius: 15% 15% 5% 5%;
     align-items: center;
 }
 
@@ -35,6 +36,7 @@
     font-size: 5vw;
     color: rgb(126, 20, 20);
     text-shadow: 1px 1px black;
+    width: 25vw;
 }
 .clock-divider{
    margin-bottom: 2vw;
@@ -102,6 +104,12 @@
     animation: blinking 4s;
     animation-iteration-count: infinite;
  }
+.alarm-hours{
+    cursor: pointer;
+}
+.alarm-minutes{
+    cursor: pointer;
+}
 
 
 
