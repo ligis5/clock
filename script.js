@@ -4,8 +4,15 @@ const month = document.querySelector(".month");
 const day = document.querySelector(".day");
 const temp = document.querySelector(".temp-number");
 const city = document.querySelector(".city");
+const weatherImg = document.querySelector(".weather-img");
+const page = document.querySelector(".page");
 const myKey = config.MY_KEY;
 let myCity = null;
+
+const input = document.createElement("input");
+input.type = "text";
+input.className = "cityInput";
+input.placeholder = "City";
 
 const getDate = () => {
   let m = new Date().getMonth() + 1;
@@ -23,28 +30,33 @@ const getDate = () => {
   minutes.innerHTML = currentMin;
 };
 
+// get city using users IP (Using API)
 const getCity = async () => {
   try {
     let res = await fetch("https://ipapi.co/json/");
     let data = await res.json();
-    // if city name is longer then 4 letters, it will be shortened.
-    city.innerHTML =
-      data.city.length > 4 ? data.city.slice(0, 4) + "..." : data.city;
     return data.city;
   } catch (err) {
     console.log(err);
   }
 };
 
-const getWeather = async () => {
+// if nothing is typed c = false then get city using IP.
+const getWeather = async (c) => {
   try {
-    myCity = await getCity();
+    myCity = !c ? await getCity() : c;
     let res = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=${myKey}&q=${myCity}&aqi=no`
     );
     let weather = await res.json();
-    temp.innerHTML = weather.current.temp_c;
+    weatherImg.src = weather.current.condition.icon;
+    temp.innerHTML = weather.current.temp_c + "c";
+    city.innerHTML = myCity;
   } catch (err) {
+    city.innerHTML = "City not found";
+    city.style.position = "fixed";
+    temp.style.marginTop = "1vw";
+    temp.innerHTML = "-00c";
     console.log(err);
   }
 };
@@ -64,10 +76,41 @@ const loop = () => {
 
 loop();
 
-city.addEventListener("mouseover", () => {
-  if (myCity != null) city.innerHTML = myCity;
+// If imput is not open, when clicked open input, where city can be typed in. Input position:fixed, so I added marginTop.
+let inputOpen = false;
+let mouseOverInput = false;
+
+const cityEventListener = city.addEventListener("click", () => {
+  if (myCity != null && !inputOpen) {
+    temp.style.marginTop = "1.5vw";
+    city.innerHTML = null;
+    city.appendChild(input);
+    inputOpen = true;
+    mouseOverInput = true;
+  }
+  removeEventListener("click", cityEventListener);
 });
-city.addEventListener("mouseout", () => {
-  if (myCity != null)
-    city.innerHTML = myCity.length > 4 ? myCity.slice(0, 4) + "..." : myCity;
+
+input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && input.value.length > 0) {
+    temp.style.marginTop = "0";
+    getWeather(input.value);
+    input.value = null;
+    inputOpen = false;
+  }
+});
+
+const listenToMouseLeaveInput = input.addEventListener(
+  "mouseleave",
+  () => (mouseOverInput = false)
+);
+
+page.addEventListener("click", () => {
+  if (inputOpen && !mouseOverInput) {
+    temp.style.marginTop = "0";
+    input.value = null;
+    city.removeChild(input);
+    city.innerHTML = myCity;
+    inputOpen = false;
+  }
 });

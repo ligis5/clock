@@ -49,21 +49,37 @@
     grid-template-rows: repeat(4, 4vw);
     border-left: 2px solid black;
 }
-
-.temperature{
+.temp-container{
     display: flex;
-    padding-left: 1vw;
-    font-size: 1.5vw;
-    height: fit-content;
+    height: 5vw;
     border-bottom: 2px solid black;
     grid-column: span 2;
 }
+.temperature{
+    display: grid;
+    padding-left: 1vw;
+    font-size: 1.5vw;
+}
+.img-container{
+    padding-left: 1vw;
+}
+.weather-img{
+    width: 5vw;
+    margin-left: 3.5vw;
+}
+
 .city{
-    cursor: none;
+    cursor: pointer;
+}
+.cityInput{
+    position: fixed;
+    width: 10vw;
+    height: 1.5vw;
 }
 .date{
     display: flex;
-    height: fit-content;
+    height: 5vw;
+    padding-top: 1vw;
     justify-content: space-around;
     grid-column: span 2;
     font-size: 2vw;
@@ -71,7 +87,7 @@
 }
 .alarm-name-container{
     grid-column: span 2;
-    margin-top: auto;
+    margin-top: 2.3vw;
     justify-self: center;
     font-size: 1.5vw;
 }
