@@ -58,6 +58,9 @@
     border-bottom: 2px solid black;
     grid-column: span 2;
 }
+.city{
+    cursor: none;
+}
 .date{
     display: flex;
     height: fit-content;
