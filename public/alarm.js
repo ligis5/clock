@@ -12,17 +12,18 @@ let changeAlarmHours = false;
 let changeAlarmMinutes = false;
 let startingMousePos = null;
 
-let localH =
-  localStorage.getItem("hours").substring(0, 1) == 0
+// if hours exist in localStorage use it else use 0, if localStorage hours has 0 in front remove it and then use whats left.
+let h = localStorage.getItem("hours")
+  ? localStorage.getItem("hours").substring(0, 1) == 0
     ? localStorage.getItem("hours").substring(1)
-    : localStorage.getItem("hours");
-let localM =
-  localStorage.getItem("minutes").substring(0, 1) == 0
+    : localStorage.getItem("hours")
+  : 0;
+// same but minutes
+let m = localStorage.getItem("minutes")
+  ? localStorage.getItem("minutes").substring(0, 1) == 0
     ? localStorage.getItem("minutes").substring(1)
-    : localStorage.getItem("minutes");
-
-let h = localH ? localH : 0;
-let m = localM ? localM : 0;
+    : localStorage.getItem("minutes")
+  : 0;
 
 // check localStorage for existing alarm
 const setAlarmClock = () => {
