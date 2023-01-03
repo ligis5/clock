@@ -45,9 +45,7 @@ alarmHours.addEventListener("mousedown", (e) => {
   // If mouse is above alarm clock it will add to h if it's less it will subtract.
   page.addEventListener("mousemove", (e) => {
     if (changeAlarmHours) {
-      let num = e.clientY % 26;
-
-      if (num === 25) {
+      if (e.clientY % 10 == 0) {
         // if moving up add hours, if moving down, remove hours.
         if (e.clientY > startingMousePos) h--;
         if (e.clientY < startingMousePos) h++;
@@ -70,25 +68,24 @@ alarmMinutes.addEventListener("mousedown", (e) => {
     startingMousePos = e.clientY;
     changeAlarmMinutes = true;
   }
-  page.addEventListener("mousemove", (e) => {
-    if (changeAlarmMinutes) {
-      let num = e.clientY % 11;
-
-      if (num === 10) {
-        // if moving up add hours, if moving down, remove hours.
-        if (e.clientY > startingMousePos) m--;
-        if (e.clientY < startingMousePos) m++;
-        // not more then 24, not less then 0 hours.
-        if (m > 59) m = 0;
-        if (m < 0) m = 59;
-        startingMousePos = e.clientY;
-        // if more then 0, but less then 10 add 0 to start
-        if (m < 10) alarmMinutes.innerHTML = "0" + m;
-        else alarmMinutes.innerHTML = m;
-      }
-      isAlarmStoped = false;
+});
+let c = 0;
+page.addEventListener("mousemove", (e) => {
+  if (changeAlarmMinutes) {
+    if (e.clientY % 5 == 0) {
+      // if moving up add hours, if moving down, remove hours.
+      if (e.clientY > startingMousePos) m--;
+      if (e.clientY < startingMousePos) m++;
+      // not more then 24, not less then 0 hours.
+      if (m > 59) m = 0;
+      if (m < 0) m = 59;
+      startingMousePos = e.clientY;
+      // if more then 0, but less then 10 add 0 to start
+      if (m < 10) alarmMinutes.innerHTML = "0" + m;
+      else alarmMinutes.innerHTML = m;
     }
-  });
+    isAlarmStoped = false;
+  }
 });
 
 // if let go of mouse fires
