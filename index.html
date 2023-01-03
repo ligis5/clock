@@ -9,6 +9,12 @@
   </head>
   <body>
     <div class="page">
+      <ul class="instructions">
+        <li>To change city, click on it.</li>
+        <li>
+          To change alarm time, hold left mouse click and drag up or down.
+        </li>
+      </ul>
       <div class="clock-frame">
         <div class="clock-screen">
           <div class="time">
@@ -39,10 +45,13 @@
             <div class="alarm-name-container">
               <h3 class="alarm-name">alarm</h3>
             </div>
-            <div class="alarm">
-              <h3 class="alarm-hours">00</h3>
-              <h3 class="alarm-divider">:</h3>
-              <h3 class="alarm-minutes">00</h3>
+            <div class="alarm-container">
+              <div class="alarm">
+                <h3 class="alarm-hours">00</h3>
+                <h3 class="alarm-divider">:</h3>
+                <h3 class="alarm-minutes">00</h3>
+                <audio src="/alarm.wav" class="alarm-sound" loop></audio>
+              </div>
             </div>
           </div>
         </div>

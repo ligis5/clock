@@ -62,7 +62,7 @@ const getWeather = async (c) => {
 };
 
 getDate();
-// getWeather();
+getWeather();
 
 const loop = () => {
   //Every second get date.
@@ -70,20 +70,19 @@ const loop = () => {
     getDate();
   }, 1000);
 
-  //Every 30 minutes check weather.
-  // setInterval(() => getWeather(), 1000 * 60 * 30);
+  // Every 30 minutes check weather.
+  setInterval(() => getWeather(), 1000 * 60 * 30);
 };
 
 loop();
 
-// If input is not open when clicked open input, where city can be typed in. Input position:fixed, so I added marginTop.
+// If input is not open when clicked open input, where city can be typed in.
 let inputOpen = false;
 let mouseOverInput = false;
 
 //
 const cityEventListener = city.addEventListener("click", () => {
   if (myCity != null && !inputOpen) {
-    temp.style.marginTop = "1.5vw";
     city.innerHTML = null;
     city.appendChild(input);
     inputOpen = true;
@@ -95,7 +94,6 @@ const cityEventListener = city.addEventListener("click", () => {
 // press enter and change city for weather checking.
 input.addEventListener("keypress", (e) => {
   if (e.key === "Enter" && input.value.length > 0) {
-    temp.style.marginTop = "0";
     getWeather(input.value);
     input.value = null;
     inputOpen = false;
@@ -107,7 +105,6 @@ input.addEventListener("mouseleave", () => (mouseOverInput = false));
 // to cancel input by click anywhere on page
 page.addEventListener("click", () => {
   if (inputOpen && !mouseOverInput) {
-    temp.style.marginTop = "0";
     input.value = null;
     city.removeChild(input);
     city.innerHTML = myCity;
