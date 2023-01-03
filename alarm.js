@@ -90,12 +90,14 @@ alarmMinutes.addEventListener("mousedown", (e) => {
 
 // if let go of mouse fires
 page.addEventListener("mouseup", () => {
+  let alarmHours = h < 10 ? "0" + h : h;
   if (changeAlarmHours) {
-    localStorage.setItem("hours", `${h}`);
+    localStorage.setItem("hours", `${alarmHours}`);
     changeAlarmHours = false;
   }
+  let alarmMinutes = m < 10 ? "0" + m : m;
   if (changeAlarmMinutes) {
-    localStorage.setItem("minutes", `${m}`);
+    localStorage.setItem("minutes", `${alarmMinutes}`);
     changeAlarmMinutes = false;
   }
 });

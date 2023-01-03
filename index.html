@@ -60,5 +60,25 @@
     <script type="text/javascript" src="config.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="alarm.js"></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB_d8G534ar_-BFTLh7mACrQ_4DEPaBNkk",
+        authDomain: "digital-clock-9e257.firebaseapp.com",
+        projectId: "digital-clock-9e257",
+        storageBucket: "digital-clock-9e257.appspot.com",
+        messagingSenderId: "868732674752",
+        appId: "1:868732674752:web:f2706c4295484f0adfc325",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>
