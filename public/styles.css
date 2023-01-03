@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.page{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(104,72,72,1) 0%, rgba(111,122,125,1) 72%);
+}
+.instructions{
+    position: fixed;
+    top: 10px;
+    font-size: 3.5vw;
+    font-weight: 500;
+}
+.clock-frame{
+    width: 45vw;
+    height: 20vw;
+    display: grid;
+    border: 3px solid black;
+    border-radius: 15% 15% 5% 5%;
+    align-items: center;
+    background-image: url(./images/wood2.jpg);
+    background-size: contain;
+}
+
+.clock-screen{
+    display: flex;
+    margin: auto;
+    width: 90%;
+    height: 80%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5%;
+    background-image: url(./images/steel.jpg);
+    background-size: contain;
+}
+
+.time{
+    display: flex;
+    align-items: center;
+    font-size: 5vw;
+    text-shadow: 2px 2px rgba(126, 20, 20, 0.589);
+    width: 25vw;
+}
+.clock-divider{
+   margin-bottom: 2vw;
+   animation: blinking 4s;
+   animation-iteration-count: infinite;
+   text-shadow: 2px 2px rgba(126, 20, 20, 0);
+}
+
+.right-side{
+    font-family: sans-serif;
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(4, 4vw);
+    border-left: 2px solid black;
+    text-shadow: 1px 1px rgb(255, 255, 255);
+}
+.temp-container{
+    display: flex;
+    height: 5vw;
+    border-bottom: 2px solid black;
+    grid-column: span 2;
+}
+.temperature{
+    display: grid;
+    padding-left: 1vw;
+    font-size: 1.5vw;
+}
+.temp-number{
+    margin-top: 1.5vw;
+}
+
+.img-container{
+    padding-left: 1vw;
+}
+.weather-img{
+    width: 5vw;
+    margin-left: 3.5vw;
+}
+
+.city{
+    cursor: pointer;
+    font-size: 1.5vw;
+    
+    position: fixed;
+}
+.cityInput{
+    font-size: 1.2vw;
+    position: fixed;
+    width: 10vw;
+    height: 1.5vw;
+    background-color: black;
+    border-radius: 5%;
+    text-align: center;
+    color: rgb(126, 20, 20);
+}
+.cityInput::placeholder{
+    color: rgb(126, 20, 20);
+    font-size: larger;
+    font-weight: 600;
+}
+.date{
+    display: flex;
+    height: 5vw;
+    padding-top: 1vw;
+    justify-content: space-around;
+    grid-column: span 2;
+    font-size: 2vw;
+    border-bottom: 2px solid black;
+}
+.alarm-name-container{
+    grid-column: span 2;
+    margin-top: 2.3vw;
+    justify-self: center;
+    font-size: 1.5vw;
+}
+.alarm-container{
+    margin: auto;
+    grid-column: span 2;
+}
+.alarm{
+    display: flex;
+    align-items: center;
+    font-size: 2vw;
+}
+.stop-alarm{
+    width: 10vw;
+    height: 2vw;
+    border: 1px solid white;
+    background-color: black;
+    color: rgb(126, 20, 20);
+    font-size: 1.5vw;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+
+.alarm-divider{
+    margin-bottom: 0.4vw;
+   animation: blinking 4s;
+   animation-iteration-count: infinite;
+ }
+.alarm-hours{
+    cursor: pointer;
+}
+.alarm-minutes{
+    cursor: pointer;
+}
+
+
+
+
+
+@keyframes blinking {
+    0% {
+        color: rgb(126, 20, 20);
+        text-shadow:1px 1px black;
+    }
+    50% {
+        color: black;
+        text-shadow:1px 1px rgb(126, 20, 20);
+    }
+    100% {
+        color: rgb(126, 20, 20);
+        text-shadow:1px 1px black;
+    }
+}

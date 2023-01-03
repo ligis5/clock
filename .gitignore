@@ -1,5 +1,4 @@
 config.js
-public/
 .firebase/
 .firebaserc
 firebase.json
