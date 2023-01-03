@@ -1,6 +1,6 @@
 config.js
- public
- firebase
- .firebaserc
- firebase.json
+public/
+firebase/
+.firebaserc
+firebase.json
  
