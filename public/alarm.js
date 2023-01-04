@@ -102,6 +102,7 @@ let timeWhenAlarmStartedPlaying = null;
 const alarmStops = () => {
   alarmContainer.removeChild(stopButton);
   alarmSound.pause();
+  alarmSound.currentTime = 0;
   isAlarmPlaying = false;
   isAlarmStoped = true;
   alarm.style.display = "flex";
