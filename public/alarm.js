@@ -34,67 +34,59 @@ const setAlarmClock = () => {
 };
 setAlarmClock();
 
-// if clicked on alarm hours, fires
-alarmHours.addEventListener("mousedown", (e) => {
+alarmHours.addEventListener("mouseover", (e) => {
   if (!changeAlarmHours) {
-    startingMousePos = e.clientY;
     changeAlarmHours = true;
   }
-  // added this one inside so it would only check when "mousedown" is fired also.
-
-  // If mouse is above alarm clock it will add to h if it's less it will subtract.
-  page.addEventListener("mousemove", (e) => {
-    if (changeAlarmHours) {
-      if (e.clientY % 10 == 0) {
-        // if moving up add hours, if moving down, remove hours.
-        if (e.clientY > startingMousePos) h--;
-        if (e.clientY < startingMousePos) h++;
-        // not more then 24, not less then 0 hours.
-        if (h > 23) h = 0;
-        if (h < 0) h = 23;
-        startingMousePos = e.clientY;
-        // if more then 0, but less then 10 add 0 to start
-        if (h < 10) alarmHours.innerHTML = "0" + h;
-        else alarmHours.innerHTML = h;
-      }
-      isAlarmStoped = false;
-    }
-  });
 });
 
-alarmMinutes.addEventListener("mousedown", (e) => {
-  // if clicked on alarm minutes, fires
+page.addEventListener("wheel", (e) => {
+  if (changeAlarmHours) {
+    if (e.deltaY > 0) h--;
+    if (e.deltaY < 0) h++;
+
+    // not more then 24, not less then 0 hours.
+    if (h > 23) h = 0;
+    if (h < 0) h = 23;
+
+    // if more then 0, but less then 10 add 0 to start
+    if (h < 10) alarmHours.innerHTML = "0" + h;
+    else alarmHours.innerHTML = h;
+
+    isAlarmStoped = false;
+  }
+});
+
+alarmMinutes.addEventListener("mouseover", (e) => {
   if (!changeAlarmMinutes) {
-    startingMousePos = e.clientY;
     changeAlarmMinutes = true;
   }
 });
 let c = 0;
-page.addEventListener("mousemove", (e) => {
+page.addEventListener("wheel", (e) => {
   if (changeAlarmMinutes) {
-    if (e.clientY % 5 == 0) {
-      // if moving up add hours, if moving down, remove hours.
-      if (e.clientY > startingMousePos) m--;
-      if (e.clientY < startingMousePos) m++;
-      // not more then 24, not less then 0 hours.
-      if (m > 59) m = 0;
-      if (m < 0) m = 59;
-      startingMousePos = e.clientY;
-      // if more then 0, but less then 10 add 0 to start
-      if (m < 10) alarmMinutes.innerHTML = "0" + m;
-      else alarmMinutes.innerHTML = m;
-    }
+    if (e.deltaY > 0) m--;
+    if (e.deltaY < 0) m++;
+
+    if (m > 59) m = 0;
+    if (m < 0) m = 59;
+
+    if (m < 10) alarmMinutes.innerHTML = "0" + m;
+    else alarmMinutes.innerHTML = m;
     isAlarmStoped = false;
   }
 });
 
 // if let go of mouse fires
-page.addEventListener("mouseup", () => {
+alarmHours.addEventListener("mouseout", () => {
   let alarmHours = h < 10 ? "0" + h : h;
   if (changeAlarmHours) {
     localStorage.setItem("hours", `${alarmHours}`);
     changeAlarmHours = false;
   }
+});
+
+alarmMinutes.addEventListener("mouseout", () => {
   let alarmMinutes = m < 10 ? "0" + m : m;
   if (changeAlarmMinutes) {
     localStorage.setItem("minutes", `${alarmMinutes}`);
